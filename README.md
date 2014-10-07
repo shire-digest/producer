@@ -1,6 +1,6 @@
 # producer
 
-[![Build Status](https://travis-ci.org/shire-digest/producer.svg?branch=master)](https://travis-ci.org/shire-digest/meta)
+[![Build Status](https://travis-ci.org/shire-digest/producer.svg?branch=master)](https://travis-ci.org/shire-digest/producer)
 
 
 ;)
