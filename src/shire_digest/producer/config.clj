@@ -1,14 +1,16 @@
 (ns shire-digest.producer.config
   "Config parser."
   (:require [clojure.java.io :as io]
-            [cheshire.core :as json]))
+            [cheshire.core :as json]
+            ;; TODO Reorganize utils module.
+            [shire-digest.crawler.utils :refer [today]]))
 
 
 (defn- from-map
   "Parse config from map."
   [config-map]
   (let [{:keys [output-directory sites generators]} config-map]
-    [{:dest output-directory} ;; basic options
+    [{:dest (str output-directory "/" (today))} ;; basic options
       sites ;; sites to be crawled
       generators ;; enabled generators
       ]))
