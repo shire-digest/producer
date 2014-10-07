@@ -1,0 +1,10 @@
+{
+  "output-directory": "/tmp",
+  "sites": [
+    {
+      "url": "http://example.com",
+      "crawler": "echo"
+    }
+  ],
+  "generators": ["simple"]
+}

@@ -3,7 +3,9 @@
   :license {:name "SMPPL"
             :url "https://github.com/xhacker/SMPPL/blob/master/SMPPL-Freeware.md"}
 
-  :dependencies [[org.clojure/clojure "1.6.0"]]
+  :dependencies [[org.clojure/clojure "1.6.0"]
+                 [org.clojure/tools.cli "0.3.1"]
+                 [cheshire "5.3.1"]]
   
   :source-paths ["src"]
   :out [shire-digest.producer.main]
