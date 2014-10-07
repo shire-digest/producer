@@ -7,6 +7,6 @@
   (testing "Parse config from json file."
     (let [test-file (io/resource "test/simple.json")
           [options sites generators] (from-json-file test-file)]
-      (is (= (:dest options) "/tmp"))
+      (is (.startsWith (:dest options) "/tmp"))
       (is (= (count sites) 1))
       (is (= (count generators) 1)))))
