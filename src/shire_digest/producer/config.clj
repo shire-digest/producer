@@ -1,27 +1,18 @@
 (ns shire-digest.producer.config
   "Config parser."
-  (:require [clojure.java.io :as io]
-            [cheshire.core :as json]
-            ;; TODO Reorganize utils module.
-            [shire-digest.crawler.utils :refer [today]]))
+  (:require [shire-digest.meta.config :refer [refine]]))
 
 
-(defn- from-map
-  "Parse config from map."
-  [config-map]
-  (let [{:keys [output-directory sites generators]} config-map]
-    [{:dest (str output-directory "/" (today))} ;; basic options
-      sites ;; sites to be crawled
-      generators ;; enabled generators
-      ]))
+(defn- read-from-file-with-trusted-contents
+  [file-name]
+  (with-open [r (java.io.PushbackReader.
+                  (clojure.java.io/reader file-name))]
+    (binding [*read-eval* false]
+      (read r))))
 
-(defn from-json-stream
-  "Parse config from json stream."
-  [stream]
-  (let [parsed (json/parse-stream stream true)]
-    (from-map parsed)))
 
-(defn from-json-file
-  "Parse config from json file."
-  [file-path]
-  (from-json-stream (io/reader file-path)))
+(defn from-file
+  "Parse config from file."
+  [file-name]
+  (let [raw-config (read-from-file-with-trusted-contents file-name)]
+    (refine raw-config)))

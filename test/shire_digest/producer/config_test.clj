@@ -3,10 +3,10 @@
             [clojure.java.io :as io]
             [shire-digest.producer.config :refer :all]))
 
-(deftest test-json-config
-  (testing "Parse config from json file."
-    (let [test-file (io/resource "test/simple.json")
-          [options sites generators] (from-json-file test-file)]
-      (is (.startsWith (:dest options) "/tmp"))
-      (is (= (count sites) 1))
-      (is (= (count generators) 1)))))
+
+(deftest test-read-from-file
+  (testing "Read config from file."
+    (let [test-file (.getFile (io/resource "test/simple.clj"))
+          {:keys [sites generators]} (from-file test-file)]
+      (is (not (nil? sites)))
+      (is (not (nil? generators))))))

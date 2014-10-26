@@ -4,16 +4,19 @@
             [clojure.tools.cli :refer [parse-opts]]))
 
 
-;; Commandline options.
+;; Options
 (def opts
-  [["-c" "--config CONFIG.json" "Configuration file (json format)."]
+  [["-c" "--config CONFIG.clj" "Configuration file."]
    ["-h" "--help" "Display this message."]])
 
+
 (defn- options-ok?
-  "Check user options."
+  "Check options."
   [options]
   (and
+    ; Ensure user had provided config file.
     (contains? options :config)))
+
 
 (defn- error-msg
   "Print error message retrieved from clojure.tools.cli ."
@@ -37,6 +40,7 @@
   [status msg]
   (println msg)
   (System/exit status))
+
 
 (defn parse-options
   "Parse commandline options.
