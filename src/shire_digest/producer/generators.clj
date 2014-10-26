@@ -18,3 +18,17 @@
   "Get a generator by name."
   [generator-name]
   (generators (keyword generator-name)))
+
+
+(defn generate-with
+  "Generate documents."
+  [generator-name options posts]
+  (let [generator ((get-by-name generator-name) options)]
+    (create generator posts)))
+
+
+(defn execute
+  "Start generate."
+  [generators posts]
+  (for [[generator-name options] (seq generators)]
+    (generate-with generator-name options posts)))

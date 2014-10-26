@@ -26,5 +26,8 @@
   (let [cli-options (parse-options args)
         config-file (:config cli-options)
         {:keys [sites generators]} (config/from-file config-file)]
+
     (doall (map validate-site (vals sites)))
-    (doall (map validate-generator (keys generators)))))
+    (doall (map validate-generator (keys generators)))
+
+    (prn (->> sites crawlers/execute (generators/execute generators)))))
