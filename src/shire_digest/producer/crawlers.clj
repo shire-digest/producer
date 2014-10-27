@@ -2,13 +2,13 @@
   "Crawlers collection."
   (:require [shire-digest.meta.link :as link]
             [shire-digest.crawler.core :refer [parse]]
-            [shire-digest.crawler.echo :refer [echo-crawler]]
-            [shire-digest.crawler.wikipedia.en.tfa :as en-tfa]))
+            [shire-digest.crawler.echo :as echo-crawler]
+            [shire-digest.crawler.wikipedia.en.tfa :as en-tfa-crawler]))
 
 
 (def crawlers
-  {:echo echo-crawler
-   :en-wikipedia-tfa en-tfa/tfa-crawler})
+  {:echo echo-crawler/create
+   :en-wikipedia-tfa en-tfa-crawler/create})
 
 
 (defn has?
@@ -26,7 +26,7 @@
 (defn do-crawl
   "Crawl a site"
   [url crawler-name options]
-  (let [crawler (get-by-name crawler-name)
+  (let [crawler ((get-by-name crawler-name) options)
         link (link/parse-string url)]
     (parse crawler link)))
 

@@ -1,11 +1,11 @@
 (ns shire-digest.producer.generators
   "Generators collection."
-  (:require [shire-digest.generator.core :refer [create]]
+  (:require [shire-digest.generator.core :refer [generate]]
             [shire-digest.generator.simple :as simple]))
 
 
 (def generators
-  {:simple simple/new-generator})
+  {:simple simple/create})
 
 
 (defn has?
@@ -24,7 +24,7 @@
   "Generate documents."
   [generator-name options posts]
   (let [generator ((get-by-name generator-name) options)]
-    (create generator posts)))
+    (generate generator posts)))
 
 
 (defn execute
@@ -32,3 +32,6 @@
   [generators posts]
   (for [[generator-name options] (seq generators)]
     (generate-with generator-name options posts)))
+
+
+(generate-with :simple {:dest "/tmp/xxxshire-digest"} [])
