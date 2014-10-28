@@ -3,12 +3,14 @@
   (:require [shire-digest.meta.link :as link]
             [shire-digest.crawler.core :refer [parse]]
             [shire-digest.crawler.echo :as echo-crawler]
-            [shire-digest.crawler.wikipedia.en.tfa :as en-tfa-crawler]))
+            [shire-digest.crawler.wikipedia.en.tfa :as en-tfa-crawler]
+            [shire-digest.crawler.wikipedia.zh.tfa :as zh-tfa-crawler]))
 
 
 (def crawlers
   {:echo echo-crawler/create
-   :en-wikipedia-tfa en-tfa-crawler/create})
+   :en-wikipedia-tfa en-tfa-crawler/create
+   :zh-wikipedia-tfa zh-tfa-crawler/create})
 
 
 (defn has?
