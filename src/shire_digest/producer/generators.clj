@@ -1,11 +1,13 @@
 (ns shire-digest.producer.generators
   "Generators collection."
   (:require [shire-digest.generator.core :refer [generate]]
-            [shire-digest.generator.simple :as simple]))
+            [shire-digest.generator.simple :as simple]
+            [shire-digest.generator.m :as m]))
 
 
 (def generators
-  {:simple simple/create})
+  {:simple simple/create
+   :m m/create})
 
 
 (defn has?
