@@ -4,13 +4,15 @@
             [shire-digest.crawler.core :refer [parse]]
             [shire-digest.crawler.echo :as echo-crawler]
             [shire-digest.crawler.wikipedia.en.tfa :as en-tfa-crawler]
-            [shire-digest.crawler.wikipedia.zh.tfa :as zh-tfa-crawler]))
+            [shire-digest.crawler.wikipedia.zh.tfa :as zh-tfa-crawler]
+            [shire-digest.crawler.news.cnn :as news-cnn-crawler]))
 
 
 (def crawlers
   {:echo echo-crawler/create
    :en-wikipedia-tfa en-tfa-crawler/create
-   :zh-wikipedia-tfa zh-tfa-crawler/create})
+   :zh-wikipedia-tfa zh-tfa-crawler/create
+   :news-cnn news-cnn-crawler/create})
 
 
 (defn has?
