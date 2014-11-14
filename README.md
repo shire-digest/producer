@@ -11,6 +11,12 @@
 $ shire-digest-produce --config my-digest-config.clj
 ```
 
+## TODO
+
+- [ ] migrate to welcome-to-shire
+- [ ] add posts bundle
+- [ ] documents
+
 ## License
 
 Copyright © 2014 hbc
